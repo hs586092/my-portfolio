@@ -29,7 +29,7 @@ export default function HeroSection() {
             <div className="animate-hero-fade-in opacity-0 [animation-delay:700ms] space-y-3">
               <Link
                 href="#business"
-                className="inline-flex items-center gap-2 bg-accent text-white px-8 py-3.5 rounded-full text-sm transition-all duration-300 hover:bg-[#b3725f]"
+                className="inline-flex items-center gap-2 bg-accent text-white px-8 py-3.5 rounded-full text-sm transition-all duration-300 hover:bg-[#e8877e]"
               >
                 사업영역 보기
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

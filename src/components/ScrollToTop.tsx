@@ -22,7 +22,7 @@ export default function ScrollToTop() {
       type="button"
       onClick={scrollToTop}
       aria-label="맨 위로 이동"
-      className={`fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-accent text-white flex items-center justify-center shadow-lg transition-all duration-300 hover:bg-[#b3725f] ${
+      className={`fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-accent text-white flex items-center justify-center shadow-lg transition-all duration-300 hover:bg-[#e8877e] ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
       }`}
     >

@@ -43,7 +43,7 @@ export default function Footer() {
                   <a
                     href={item.href}
                     onClick={(e) => handleClick(e, item.href)}
-                    className="hover:text-[#c4826d] transition-colors duration-300"
+                    className="hover:text-[#F4978E] transition-colors duration-300"
                   >
                     {item.label}
                   </a>

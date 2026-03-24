@@ -109,7 +109,7 @@ export default function ContactSection() {
 
             <button
               type="submit"
-              className="w-full bg-accent text-white py-3.5 rounded-full text-sm transition-colors duration-300 hover:bg-[#b3725f]"
+              className="w-full bg-accent text-white py-3.5 rounded-full text-sm transition-colors duration-300 hover:bg-[#e8877e]"
             >
               문의 보내기
             </button>
