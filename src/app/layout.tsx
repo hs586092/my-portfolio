@@ -20,7 +20,7 @@ const playfairDisplay = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "Balsan Market | 키즈카페 미끄럼방지 양말 전문",
-  description: "연간 20만 켤레의 압도적 판매량, 키즈카페 미끄럼 방지 양말 전문 유통 기업",
+  description: "연간 70만 켤레의 압도적 판매량, 키즈카페 미끄럼 방지 양말 전문 유통 기업",
 };
 
 export default function RootLayout({

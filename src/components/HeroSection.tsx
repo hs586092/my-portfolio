@@ -29,7 +29,7 @@ export default function HeroSection() {
               </div>
 
               <h1 className="animate-hero-fade-in text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight opacity-0 [animation-delay:300ms]">
-                연간 20만 켤레의
+                연간 70만 켤레의
                 <br />
                 압도적 판매량!
               </h1>
