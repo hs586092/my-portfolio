@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import SockIllustration from "./SockIllustration";
 
 export default function HeroSection() {
   return (
@@ -52,16 +53,10 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Product image */}
-          <div className="absolute right-8 md:right-16 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
-            <div className="relative w-[200px] h-[260px] rounded-2xl overflow-hidden shadow-lg">
-              <Image
-                src="/images/product-7set.png"
-                alt="키즈카페양말 7켤레 세트"
-                fill
-                className="object-cover"
-              />
-            </div>
+          {/* Decorative sock illustrations */}
+          <div className="absolute right-8 md:right-16 top-1/2 -translate-y-1/2 z-10 hidden lg:flex gap-4 opacity-80">
+            <SockIllustration variant={1} className="w-20 h-28 drop-shadow-lg" />
+            <SockIllustration variant={3} className="w-20 h-28 drop-shadow-lg mt-8" />
           </div>
 
           {/* Slide Indicators */}
