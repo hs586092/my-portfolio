@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans_KR } from "next/font/google";
+import { Noto_Sans_KR, Playfair_Display } from "next/font/google";
 import PromoBanner from "@/components/PromoBanner";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -10,6 +10,12 @@ const notoSansKR = Noto_Sans_KR({
   variable: "--font-sans-kr",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+});
+
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["700", "900"],
 });
 
 export const metadata: Metadata = {
@@ -25,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${notoSansKR.variable} antialiased`}
+      className={`${notoSansKR.variable} ${playfairDisplay.variable} antialiased`}
     >
       <body className="min-h-screen flex flex-col font-sans">
         <PromoBanner />

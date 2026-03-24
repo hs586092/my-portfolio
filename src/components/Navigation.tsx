@@ -68,9 +68,10 @@ export default function Navigation() {
             <a
               href="#top"
               onClick={(e) => handleClick(e, "#top")}
-              className="font-semibold text-lg lg:text-xl text-dark flex-shrink-0"
+              className="text-lg lg:text-xl text-dark flex-shrink-0 font-[900] tracking-tight"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
             >
-              Balsan Market
+              Balsan market
             </a>
 
             {/* Search — desktop */}

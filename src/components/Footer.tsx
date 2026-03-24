@@ -130,7 +130,7 @@ export default function Footer() {
       <div className="border-t border-warm-border">
         <div className="max-w-7xl mx-auto px-4 lg:px-12 py-6">
           <p className="text-xs text-warm-gray">
-            &copy; {new Date().getFullYear()} Balsan Market. All rights reserved.
+            &copy; {new Date().getFullYear()} <span style={{ fontFamily: "var(--font-playfair), serif" }} className="font-[900]">Balsan market</span>. All rights reserved.
           </p>
         </div>
       </div>
