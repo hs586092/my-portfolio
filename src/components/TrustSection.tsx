@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -138,19 +138,32 @@ const additionalCategories = [
 
 const reviews = [
   {
-    text: "양말 품질이 정말 좋아요. 아이들이 미끄러지지 않아서 안심이 됩니다.",
-    author: "김○○",
-    affiliation: "해피키즈 어린이집 원장",
+    author: "김*지",
+    role: "필라테스 트레이너",
+    title: "논슬립패드가 촘촘하고 적당한 두께라 쾌적하고 좋아요!",
+    content: "필라테스 할 때는 위생상, 부상 예방 목적으로 무조건 미끄럼방지 양말을 신어야하는데 이 양말은 가격도 품질도 딱 좋아요! 자세에 집중할 수 있고 적당한 두께라 운동중에 발이 쾌적합니다. 발가락 나눠지 않는 양말은 감사라니 귀찮을 때가 있는데 이건 그냥 쏙 신으면 되어서 너무 편해요!",
+    rating: 5,
   },
   {
-    text: "대량 주문에도 빠른 배송, 가격도 합리적이에요.",
-    author: "이○○",
-    affiliation: "점핑파크 키즈카페 대표",
+    author: "황*민",
+    role: "필라테스 트레이너",
+    title: "발목과 발바닥을 딱 잡아주니 운동에 집중할 수 있어요!",
+    content: "양말 대비나 운동할때 양말 흘러내리는거 신경 쓰셨는데 이 양말 신으니 발바닥 논슬립패드가 딱 잡아주고 소재도 부드러워 착용감 좋아요.",
+    rating: 5,
   },
   {
-    text: "디자인이 다양해서 아이들이 좋아해요. 재주문률이 높습니다.",
-    author: "박○○",
-    affiliation: "리틀스타 소아과",
+    author: "박*최",
+    role: "PT 트레이너",
+    title: "신발안에서 발 밀림없어 웨이트 할 때 꼭 신습니다!",
+    content: "완전 쫀쫀한 재질이 너무 좋아요!! 착한 가격에 가성비 인정 최고여서 회원님들께 추천 많이 드립니다. 안에서 발밀림없어서 요즘 하체 운동할 때 꼭 신발 벗고 신을때 편합니다.",
+    rating: 5,
+  },
+  {
+    author: "정*혜",
+    role: "PT 트레이너",
+    title: "초보자들 웨이트 할 때 안전하게 운동할 수 있어요!",
+    content: "웨이트할 때 발의 힘을 잘 느껴야 하는데 이 양말 신으니 접지가 잘 되고 지면 반발력이 엄청 잘 느껴집니다. 맨동시 발바닥을 딛는 힘을 느끼기 어려운 초보자에게 완전 강추!",
+    rating: 5,
   },
 ];
 
@@ -161,6 +174,16 @@ export default function TrustSection() {
   const { ref: logosRef, isVisible: logosVisible } = useScrollAnimation();
   const { ref: reviewRef, isVisible: reviewVisible } = useScrollAnimation();
   const reviewScrollRef = useRef<HTMLDivElement>(null);
+  const [expandedReviews, setExpandedReviews] = useState<Set<number>>(new Set());
+
+  const toggleReview = (index: number) => {
+    setExpandedReviews((prev) => {
+      const next = new Set(prev);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+  };
 
   return (
     <section id="trust" className="bg-warm-bg py-24 lg:py-32">
@@ -352,48 +375,64 @@ export default function TrustSection() {
             reviewVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          <h3 className="text-2xl font-semibold text-dark text-center mb-10">고객 후기</h3>
+          <div className="text-center mb-10">
+            <h3 className="text-2xl lg:text-3xl font-semibold text-dark mb-2">현직 트레이너가 인정한 품질</h3>
+            <p className="text-sm text-warm-gray">필라테스, PT 전문가들이 직접 사용하고 추천합니다</p>
+          </div>
 
-          {/* Review cards — horizontal scroll on mobile, grid on desktop */}
+          {/* Review cards — scroll on mobile, 2x2 grid on desktop */}
           <div
             ref={reviewScrollRef}
-            className="flex lg:grid lg:grid-cols-3 gap-6 overflow-x-auto pb-4 lg:pb-0 snap-x snap-mandatory scrollbar-hide"
+            className="flex lg:grid lg:grid-cols-2 gap-6 overflow-x-auto pb-4 lg:pb-0 snap-x snap-mandatory scrollbar-hide"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
-            {reviews.map((review, index) => (
-              <div
-                key={index}
-                className={`flex-shrink-0 w-[85vw] sm:w-[340px] lg:w-auto bg-white rounded-2xl p-8 shadow-[0_2px_20px_rgba(0,0,0,0.04)] snap-center transition-all duration-700 ${
-                  reviewVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-                }`}
-                style={{ transitionDelay: reviewVisible ? `${300 + index * 150}ms` : "0ms" }}
-              >
-                {/* Quote icon */}
-                <span className="text-4xl lg:text-5xl font-serif text-[#F4978E] leading-none block mb-4">
-                  &ldquo;
-                </span>
+            {reviews.map((review, index) => {
+              const isExpanded = expandedReviews.has(index);
+              return (
+                <div
+                  key={index}
+                  className={`flex-shrink-0 w-[85vw] sm:w-[340px] lg:w-auto bg-white rounded-2xl p-7 lg:p-8 shadow-[0_2px_20px_rgba(0,0,0,0.04)] snap-center transition-all duration-700 hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.08)] ${
+                    reviewVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                  }`}
+                  style={{ transitionDelay: reviewVisible ? `${300 + index * 150}ms` : "0ms" }}
+                >
+                  {/* Author badge */}
+                  <span className="inline-block px-3.5 py-1.5 bg-[#F4978E] text-white text-xs font-medium rounded-full mb-4">
+                    {review.author} {review.role}
+                  </span>
 
-                {/* Review text */}
-                <p className="text-dark text-sm lg:text-base leading-relaxed mb-6">
-                  {review.text}
-                </p>
+                  {/* Stars */}
+                  <div className="flex gap-0.5 mb-3 text-[#F4978E]">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                      </svg>
+                    ))}
+                  </div>
 
-                {/* Stars */}
-                <div className="flex gap-0.5 mb-4 text-[#F4978E]">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
-                    </svg>
-                  ))}
+                  {/* Title */}
+                  <p className="text-dark font-semibold text-sm lg:text-base leading-snug mb-2">
+                    {review.title}
+                  </p>
+
+                  {/* Content */}
+                  <p className={`text-sm text-warm-gray leading-relaxed ${isExpanded ? "" : "line-clamp-3"}`}>
+                    {review.content}
+                  </p>
+
+                  {/* Toggle button */}
+                  {review.content.length > 80 && (
+                    <button
+                      type="button"
+                      onClick={() => toggleReview(index)}
+                      className="text-xs text-[#F4978E] font-medium mt-2 hover:underline"
+                    >
+                      {isExpanded ? "접기" : "더보기"}
+                    </button>
+                  )}
                 </div>
-
-                {/* Author */}
-                <div>
-                  <p className="text-sm font-semibold text-dark">{review.author}</p>
-                  <p className="text-xs text-warm-gray">{review.affiliation}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
