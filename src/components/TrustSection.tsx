@@ -29,46 +29,21 @@ const galleryImages = [
   },
 ];
 
-const partners = [
+const kidsCafePartners = [
   {
-    name: "플레이즈 키즈카페",
+    name: "챔피언",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 21h18" />
-        <path d="M5 21V7l7-4 7 4v14" />
-        <path d="M9 21v-4h6v4" />
-        <path d="M9 10h.01M15 10h.01" />
+        <path d="M6 9H4.5a2.5 2.5 0 010-5H6" />
+        <path d="M18 9h1.5a2.5 2.5 0 000-5H18" />
+        <path d="M4 22h16" />
+        <path d="M10 22V2h4v20" />
+        <path d="M8 6h8" />
       </svg>
     ),
   },
   {
-    name: "점핑파크",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="8" r="4" />
-        <path d="M12 12v4" />
-        <path d="M8 20l4-4 4 4" />
-        <path d="M6 16l2-2" />
-        <path d="M18 16l-2-2" />
-      </svg>
-    ),
-  },
-  {
-    name: "키즈앤키즈",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="9" cy="7" r="3" />
-        <circle cx="15" cy="7" r="3" />
-        <path d="M9 10v6" />
-        <path d="M15 10v6" />
-        <path d="M7 20l2-4" />
-        <path d="M17 20l-2-4" />
-        <path d="M9 14h6" />
-      </svg>
-    ),
-  },
-  {
-    name: "해피플레이",
+    name: "잭슨나인",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
@@ -79,26 +54,83 @@ const partners = [
     ),
   },
   {
-    name: "리틀포레스트",
+    name: "쁘띠몽드",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 3l-4 7h8l-4-7z" />
-        <path d="M12 10l-5 8h10l-5-8z" />
-        <line x1="12" y1="18" x2="12" y2="22" />
-        <line x1="8" y1="22" x2="16" y2="22" />
+        <circle cx="12" cy="12" r="10" />
+        <path d="M2 12h20" />
+        <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
       </svg>
     ),
   },
   {
-    name: "점프노리",
+    name: "월드킹",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M2 22l4-4" />
-        <path d="M18 22l4-4" />
-        <path d="M6 18q6-12 12 0" />
+        <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z" />
+        <path d="M3 20h18" />
+      </svg>
+    ),
+  },
+  {
+    name: "메가키즈",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+      </svg>
+    ),
+  },
+  {
+    name: "헬로방방",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M8 20l4-4 4 4" />
+        <path d="M6 16q6-12 12 0" />
         <circle cx="12" cy="6" r="3" />
-        <path d="M10 9l-2 4" />
-        <path d="M14 9l2 4" />
+      </svg>
+    ),
+  },
+  {
+    name: "아틀란티스퍼플",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 21h18" />
+        <path d="M5 21V7l7-4 7 4v14" />
+        <path d="M9 21v-4h6v4" />
+        <path d="M9 10h.01M15 10h.01" />
+      </svg>
+    ),
+  },
+];
+
+const additionalCategories = [
+  {
+    name: "육아종합센터",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z" />
+      </svg>
+    ),
+  },
+  {
+    name: "학교 및 공공기관",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 21h18" />
+        <path d="M9 21V11h6v10" />
+        <path d="M5 21V5l7-2 7 2v16" />
+        <path d="M12 7v.01" />
+      </svg>
+    ),
+  },
+  {
+    name: "노인요양시설",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M22 21v-2a4 4 0 00-3-3.87" />
+        <path d="M16 3.13a4 4 0 010 7.75" />
       </svg>
     ),
   },
@@ -256,15 +288,20 @@ export default function TrustSection() {
           }`}
           style={{ transitionDelay: logosVisible ? "200ms" : "0ms" }}
         >
-          <h3 className="text-lg font-semibold text-dark text-center mb-10">주요 거래처 및 파트너</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
-            {partners.map((partner, index) => (
+          {/* Headline */}
+          <h3 className="text-2xl lg:text-3xl font-semibold text-dark text-center mb-12">
+            전국 <span className="text-[#F4978E]">20여 곳 이상</span>의 키즈카페에 납품하고 있습니다
+          </h3>
+
+          {/* Kids Cafe Partners */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4 lg:gap-5 mb-12">
+            {kidsCafePartners.map((partner, index) => (
               <div
                 key={partner.name}
-                className={`flex flex-col items-center justify-center gap-3 py-6 px-3 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] bg-gradient-to-b from-white to-white hover:from-[#FFF0ED] hover:to-white ${
+                className={`flex flex-col items-center justify-center gap-3 py-6 px-3 bg-white rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:bg-[#FFF0ED] ${
                   logosVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                 }`}
-                style={{ transitionDelay: logosVisible ? `${300 + index * 100}ms` : "0ms" }}
+                style={{ transitionDelay: logosVisible ? `${300 + index * 80}ms` : "0ms" }}
               >
                 <div className="text-[#F4978E]">
                   {partner.icon}
@@ -275,13 +312,35 @@ export default function TrustSection() {
               </div>
             ))}
           </div>
-          <div className="text-center mt-8">
-            <p className="text-sm text-warm-gray mb-2">그 외 다수의 어린이집, 키즈카페, 소아과와 함께하고 있습니다</p>
+
+          {/* Additional Categories */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 mb-10">
+            {additionalCategories.map((category, index) => (
+              <div
+                key={category.name}
+                className={`flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#f9f8f6] transition-all duration-700 ${
+                  logosVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                }`}
+                style={{ transitionDelay: logosVisible ? `${800 + index * 100}ms` : "0ms" }}
+              >
+                <div className="text-[#F4978E]">
+                  {category.icon}
+                </div>
+                <span className="text-sm font-semibold text-dark">
+                  {category.name}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Footer text + CTA */}
+          <div className="text-center">
+            <p className="text-sm text-warm-gray mb-4">그 외 다수의 기관과 함께하고 있습니다</p>
             <a
               href="#contact"
-              className="text-sm text-[#F4978E] font-medium hover:underline"
+              className="inline-block px-6 py-2.5 border border-[#F4978E] text-[#F4978E] text-sm font-medium rounded-full hover:bg-[#F4978E] hover:text-white transition-colors duration-200"
             >
-              파트너 문의하기 →
+              납품 문의하기
             </a>
           </div>
         </div>
