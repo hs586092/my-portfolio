@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import SockIllustration from "./SockIllustration";
 
 const products = [
   {
@@ -17,37 +18,40 @@ const products = [
     hasImage: true,
   },
   {
-    name: "[상품명을 입력하세요]",
+    name: "스트라이프 미끄럼방지 양말 (3켤레)",
     image: "",
-    alt: "",
+    alt: "스트라이프 양말",
     badge: "NEW",
-    originalPrice: "[원가]",
-    discount: "[할인율]",
-    salePrice: "[판매가]",
-    reviews: "0",
+    originalPrice: "9,900원",
+    discount: "20%",
+    salePrice: "7,920원",
+    reviews: "128",
     hasImage: false,
+    illustration: 2 as const,
   },
   {
-    name: "[상품명을 입력하세요]",
+    name: "곰돌이 미끄럼방지 양말 (5켤레)",
     image: "",
-    alt: "",
+    alt: "곰돌이 양말",
     badge: null,
-    originalPrice: "[원가]",
-    discount: null,
-    salePrice: "[판매가]",
-    reviews: null,
+    originalPrice: "12,000원",
+    discount: "15%",
+    salePrice: "10,200원",
+    reviews: "256",
     hasImage: false,
+    illustration: 3 as const,
   },
   {
-    name: "[상품명을 입력하세요]",
+    name: "하트 패턴 미끄럼방지 양말 (3켤레)",
     image: "",
-    alt: "",
+    alt: "하트 패턴 양말",
     badge: null,
-    originalPrice: "[원가]",
+    originalPrice: "8,500원",
     discount: null,
-    salePrice: "[판매가]",
-    reviews: null,
+    salePrice: "8,500원",
+    reviews: "87",
     hasImage: false,
+    illustration: 4 as const,
   },
 ];
 
@@ -103,6 +107,10 @@ export default function BusinessSection() {
                       fill
                       className="object-cover"
                     />
+                  ) : "illustration" in product && product.illustration ? (
+                    <div className="w-full h-full flex items-center justify-center p-4">
+                      <SockIllustration variant={product.illustration as 1 | 2 | 3 | 4} className="w-full h-full" />
+                    </div>
                   ) : (
                     <div className="w-full h-full flex items-center justify-center border border-dashed border-warm-border">
                       <span className="text-xs text-warm-gray">이미지를 넣어주세요</span>
