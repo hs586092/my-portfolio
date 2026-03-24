@@ -13,7 +13,7 @@ const stats = [
 
 const galleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1587654780291-39c9404d7dd0?w=600&q=80",
+    src: "https://images.unsplash.com/photo-1566140967404-b8b3932483f5?w=600&q=80",
     alt: "키즈카페에서 노는 아이들",
     span: "row-span-2",
   },
@@ -23,7 +23,7 @@ const galleryImages = [
     span: "",
   },
   {
-    src: "https://images.unsplash.com/photo-1576037728058-c1c02de854b0?w=400&q=80",
+    src: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=400&q=80",
     alt: "어린이집 실내 놀이",
     span: "",
   },
