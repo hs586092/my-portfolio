@@ -38,7 +38,7 @@ const products = [
   {
     name: "어린이용 미끄럼방지 양말",
     description: "안전하고 귀여운 디자인, 어린이집·키즈카페 인기 상품",
-    image: "",
+    image: "/images/product-7set.png",
     alt: "어린이용 양말",
     badge: null,
     price: 50000,
@@ -47,8 +47,7 @@ const products = [
     bulkDiscount: "100켤레 이상 → 1켤레당 3,500원",
     freeShipping: true,
     reviews: "256",
-    hasImage: false,
-    illustration: 3 as const,
+    hasImage: true,
   },
   {
     name: "하트 패턴 미끄럼방지 양말 (3켤레)",

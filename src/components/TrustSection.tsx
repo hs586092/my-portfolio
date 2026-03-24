@@ -376,8 +376,20 @@ export default function TrustSection() {
           }`}
         >
           <div className="text-center mb-10">
-            <h3 className="text-2xl lg:text-3xl font-semibold text-dark mb-2">현직 트레이너가 인정한 품질</h3>
-            <p className="text-sm text-warm-gray">필라테스, PT 전문가들이 직접 사용하고 추천합니다</p>
+            <h3 className="text-2xl lg:text-3xl font-semibold text-dark mb-3">현직 트레이너가 인정한 품질</h3>
+            <p className="text-sm text-warm-gray mb-4">필라테스, PT 전문가들이 직접 사용하고 추천합니다</p>
+            {/* Rating badge */}
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-full shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+              <div className="flex gap-0.5 text-[#F4978E]">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                  </svg>
+                ))}
+              </div>
+              <span className="text-dark font-semibold text-sm">4.84</span>
+              <span className="text-warm-gray text-xs">/ 5.0</span>
+            </div>
           </div>
 
           {/* Review cards — scroll on mobile, 2x2 grid on desktop */}
