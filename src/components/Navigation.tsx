@@ -13,14 +13,10 @@ const sectionIds = ["top", "business", "trust", "contact"];
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("top");
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-
-      // Determine active section
       const scrollPos = window.scrollY + 120;
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const id = sectionIds[i];
@@ -58,46 +54,37 @@ export default function Navigation() {
   };
 
   return (
-    <nav
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-sm"
-          : "bg-white"
-      }`}
-    >
-      <div className="mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="flex h-20 items-center justify-between">
+    <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a
             href="#top"
             onClick={(e) => handleClick(e, "#top")}
-            className="font-serif text-xl tracking-[0.15em] text-navy"
+            className="font-bold text-2xl text-[#111]"
           >
-            HS TRADING
+            Balsan Market
           </a>
 
           {/* Desktop Menu */}
-          <ul className="hidden md:flex items-center gap-10">
+          <div className="hidden md:flex items-center gap-12">
             {menuItems.map((item) => {
               const sectionId = item.href.replace("#", "");
               const isActive = activeSection === sectionId;
               return (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    onClick={(e) => handleClick(e, item.href)}
-                    className={`text-sm tracking-[0.05em] transition-colors duration-300 ${
-                      isActive
-                        ? "text-gold border-b border-gold pb-1"
-                        : "text-gray-600 hover:text-navy"
-                    }`}
-                  >
-                    {item.label}
-                  </a>
-                </li>
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => handleClick(e, item.href)}
+                  className={`text-[#111] transition-colors duration-300 ${
+                    isActive ? "text-[#c9a96e]" : "hover:text-[#c9a96e]"
+                  }`}
+                >
+                  {item.label}
+                </a>
               );
             })}
-          </ul>
+          </div>
 
           {/* Mobile Hamburger */}
           <button
@@ -108,18 +95,18 @@ export default function Navigation() {
             aria-expanded={isOpen}
           >
             <span
-              className={`block h-0.5 w-6 bg-navy transition-all duration-300 ${
-                isOpen ? "translate-y-2 rotate-45" : ""
+              className={`block h-px w-6 bg-[#111] transition-all duration-300 ${
+                isOpen ? "translate-y-[7px] rotate-45" : ""
               }`}
             />
             <span
-              className={`block h-0.5 w-6 bg-navy transition-all duration-300 ${
+              className={`block h-px w-6 bg-[#111] transition-all duration-300 ${
                 isOpen ? "opacity-0" : ""
               }`}
             />
             <span
-              className={`block h-0.5 w-6 bg-navy transition-all duration-300 ${
-                isOpen ? "-translate-y-2 -rotate-45" : ""
+              className={`block h-px w-6 bg-[#111] transition-all duration-300 ${
+                isOpen ? "-translate-y-[7px] -rotate-45" : ""
               }`}
             />
           </button>
@@ -128,11 +115,11 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
+        className={`md:hidden overflow-hidden transition-all duration-300 bg-white ${
           isOpen ? "max-h-80" : "max-h-0"
         }`}
       >
-        <ul className="border-t border-gray-100 px-6 py-4 space-y-1">
+        <ul className="px-6 py-4 space-y-1">
           {menuItems.map((item) => {
             const sectionId = item.href.replace("#", "");
             const isActive = activeSection === sectionId;
@@ -141,8 +128,8 @@ export default function Navigation() {
                 <a
                   href={item.href}
                   onClick={(e) => handleClick(e, item.href)}
-                  className={`block py-3 text-sm tracking-[0.05em] transition-colors duration-300 ${
-                    isActive ? "text-gold" : "text-gray-600 hover:text-navy"
+                  className={`block py-3 transition-colors duration-300 ${
+                    isActive ? "text-[#c9a96e]" : "text-[#111] hover:text-[#c9a96e]"
                   }`}
                 >
                   {item.label}
