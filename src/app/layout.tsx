@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
+import PromoBanner from "@/components/PromoBanner";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -27,6 +28,7 @@ export default function RootLayout({
       className={`${notoSansKR.variable} antialiased`}
     >
       <body className="min-h-screen flex flex-col font-sans">
+        <PromoBanner />
         <Navigation />
         <main className="flex-1">{children}</main>
         <Footer />

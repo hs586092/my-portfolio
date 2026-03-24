@@ -1,119 +1,178 @@
 "use client";
 
-import { useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-const categories = [
-  "전체",
-  "미끄럼방지 양말",
-  "[카테고리2]",
-  "[카테고리3]",
-  "[카테고리4]",
-];
-
-const cards = [
+const products = [
   {
-    title: "유아용 양말",
-    description: "부드러운 소재와 안전한 디자인으로 아기의 발을 보호합니다",
-    price: "[가격 미정]",
+    name: "프리미엄 미끄럼방지 양말 (5켤레)",
     image: "https://images.unsplash.com/photo-1542355581-caf7454785ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWJ5JTIwc29ja3MlMjBjb2xvcmZ1bHxlbnwxfHx8fDE3NzQzMTc2NzV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    alt: "유아용 양말",
+    alt: "미끄럼방지 양말",
+    badge: "BEST",
+    originalPrice: "15,000원",
+    discount: "30%",
+    salePrice: "10,500원",
+    reviews: "999+",
+    hasImage: true,
   },
   {
-    title: "어린이용 실내화",
-    description: "키즈카페와 어린이집에 최적화된 편안한 실내화",
-    price: "[가격 미정]",
-    image: "https://images.unsplash.com/photo-1763256340027-41477e097519?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlsZHJlbiUyMHNob2VzJTIwaW5kb29yfGVufDF8fHx8MTc3NDMxNzY3Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    alt: "실내화",
+    name: "[상품명을 입력하세요]",
+    image: "",
+    alt: "",
+    badge: "NEW",
+    originalPrice: "[원가]",
+    discount: "[할인율]",
+    salePrice: "[판매가]",
+    reviews: "0",
+    hasImage: false,
   },
   {
-    title: "어린이용 미끄럼방지 양말",
-    description: "안전한 활동을 위한 프리미엄 미끄럼방지 양말",
-    price: "[가격 미정]",
-    image: "https://images.unsplash.com/photo-1632337948797-ba161d29532b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxraWRzJTIwY2xvdGhpbmclMjBwcm9kdWN0fGVufDF8fHx8MTc3NDMxNzY3Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    alt: "어린이용 미끄럼방지 양말",
+    name: "[상품명을 입력하세요]",
+    image: "",
+    alt: "",
+    badge: null,
+    originalPrice: "[원가]",
+    discount: null,
+    salePrice: "[판매가]",
+    reviews: null,
+    hasImage: false,
+  },
+  {
+    name: "[상품명을 입력하세요]",
+    image: "",
+    alt: "",
+    badge: null,
+    originalPrice: "[원가]",
+    discount: null,
+    salePrice: "[판매가]",
+    reviews: null,
+    hasImage: false,
   },
 ];
 
 export default function BusinessSection() {
   const { ref, isVisible } = useScrollAnimation();
-  const [activeCategory, setActiveCategory] = useState("전체");
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollRight = () => {
+    scrollContainerRef.current?.scrollBy({ left: 280, behavior: "smooth" });
+  };
 
   return (
-    <section id="business" className="bg-white py-24 lg:py-32">
-      <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-12">
+    <section id="business" className="bg-white py-10 lg:py-14">
+      <div ref={ref} className="max-w-7xl mx-auto px-4 lg:px-12">
         {/* Section Title */}
-        <h2
-          className={`text-3xl lg:text-4xl font-semibold text-dark mb-8 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
-        >
-          사업영역
-        </h2>
-
-        {/* Category Bar */}
         <div
-          className={`flex gap-3 mb-12 overflow-x-auto pb-2 transition-all duration-700 ${
+          className={`mb-6 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
-          style={{ transitionDelay: isVisible ? "150ms" : "0ms" }}
         >
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              type="button"
-              onClick={() => setActiveCategory(cat)}
-              className={`flex-shrink-0 px-5 py-2 rounded-full text-sm transition-all duration-300 ${
-                activeCategory === cat
-                  ? "bg-accent text-white"
-                  : "border border-warm-border text-dark hover:border-accent hover:text-accent"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+          <h2 className="text-xl lg:text-2xl font-semibold text-dark flex items-center gap-1">
+            지금 가장 많이 찾는 상품
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-warm-gray">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </h2>
+          <p className="text-sm text-warm-gray mt-1.5 font-light">
+            어린이집·키즈카페에서 가장 많이 주문하는 상품
+          </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-          {cards.map((card, index) => (
-            <div
-              key={index}
-              className={`group transition-all duration-700 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-              }`}
-              style={{ transitionDelay: isVisible ? `${300 + index * 150}ms` : "0ms" }}
-            >
-              {/* Image */}
-              <div className="aspect-[4/3] bg-warm-bg overflow-hidden rounded-2xl mb-4">
-                <Image
-                  src={card.image}
-                  alt={card.alt}
-                  width={600}
-                  height={450}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-
-              {/* Content */}
-              <h3 className="text-lg font-semibold text-dark mb-1">
-                {card.title}
-              </h3>
-              <p className="text-sm text-warm-gray font-light mb-3 leading-relaxed">
-                {card.description}
-              </p>
-              <p className="text-base font-medium text-dark mb-3">
-                {card.price}
-              </p>
-              <button
-                type="button"
-                className="px-5 py-2 text-sm border border-accent text-accent rounded-full transition-all duration-300 hover:bg-accent hover:text-white"
+        {/* Product Cards — horizontal scroll */}
+        <div className="relative">
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {products.map((product, index) => (
+              <div
+                key={index}
+                className={`flex-shrink-0 w-[220px] md:w-[250px] transition-all duration-700 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                }`}
+                style={{ transitionDelay: isVisible ? `${200 + index * 120}ms` : "0ms" }}
               >
-                문의하기
-              </button>
-            </div>
-          ))}
+                {/* Image */}
+                <div className="relative aspect-[3/4] bg-warm-bg rounded-lg overflow-hidden mb-3">
+                  {product.hasImage ? (
+                    <Image
+                      src={product.image}
+                      alt={product.alt}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center border border-dashed border-warm-border">
+                      <span className="text-xs text-warm-gray">이미지를 넣어주세요</span>
+                    </div>
+                  )}
+
+                  {/* Badge */}
+                  {product.badge && (
+                    <span className="absolute top-2.5 left-2.5 px-2.5 py-1 bg-accent text-white text-[10px] font-medium rounded">
+                      {product.badge}
+                    </span>
+                  )}
+                </div>
+
+                {/* Add to Cart Button */}
+                <button
+                  type="button"
+                  className="w-full flex items-center justify-center gap-1.5 py-2 border border-warm-border rounded-lg text-sm text-dark mb-3 hover:border-accent hover:text-accent transition-colors duration-200"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <path d="M16 10a4 4 0 01-8 0" />
+                  </svg>
+                  담기
+                </button>
+
+                {/* Product Name */}
+                <p className="text-sm text-dark mb-2 line-clamp-2 leading-snug">
+                  {product.name}
+                </p>
+
+                {/* Price */}
+                <div className="space-y-0.5">
+                  <p className="text-xs text-warm-gray line-through">
+                    {product.originalPrice}
+                  </p>
+                  <div className="flex items-center gap-2">
+                    {product.discount && (
+                      <span className="text-accent font-semibold text-sm">
+                        {product.discount}
+                      </span>
+                    )}
+                    <span className="text-dark font-semibold text-base">
+                      {product.salePrice}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Reviews */}
+                {product.reviews && (
+                  <p className="text-xs text-warm-gray mt-2">
+                    💬 {product.reviews}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Scroll Right Button */}
+          <button
+            type="button"
+            onClick={scrollRight}
+            aria-label="다음 상품"
+            className="hidden md:flex absolute -right-3 top-1/3 -translate-y-1/2 w-10 h-10 bg-white border border-warm-border rounded-full items-center justify-center shadow-md hover:border-accent transition-colors"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>
