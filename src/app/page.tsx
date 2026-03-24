@@ -1,6 +1,7 @@
 import HeroSection from "@/components/HeroSection";
 import BusinessSection from "@/components/BusinessSection";
 import ProductFeatures from "@/components/ProductFeatures";
+import VideoSection from "@/components/VideoSection";
 import TrustSection from "@/components/TrustSection";
 import ContactSection from "@/components/ContactSection";
 
@@ -10,6 +11,7 @@ export default function Home() {
       <HeroSection />
       <BusinessSection />
       <ProductFeatures />
+      <VideoSection />
       <TrustSection />
       <ContactSection />
     </>
