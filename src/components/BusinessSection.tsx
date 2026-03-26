@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import SockIllustration from "./SockIllustration";
 
@@ -102,9 +103,10 @@ export default function BusinessSection() {
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {products.map((product, index) => (
-              <div
+              <Link
                 key={index}
-                className={`flex-shrink-0 w-[220px] md:w-[250px] transition-all duration-700 ${
+                href={`/products/${index + 1}`}
+                className={`flex-shrink-0 w-[220px] md:w-[250px] transition-all duration-700 block ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                 }`}
                 style={{ transitionDelay: isVisible ? `${200 + index * 120}ms` : "0ms" }}
@@ -204,7 +206,7 @@ export default function BusinessSection() {
                     💬 {product.reviews}
                   </p>
                 )}
-              </div>
+              </Link>
             ))}
           </div>
 

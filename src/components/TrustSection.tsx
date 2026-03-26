@@ -271,36 +271,13 @@ export default function TrustSection() {
           }`}
           style={{ transitionDelay: videoVisible ? "200ms" : "0ms" }}
         >
-          {/* Background image with dark overlay */}
-          <Image
-            src="https://images.unsplash.com/photo-1544776193-352d25ca82cd?w=1200&q=80"
-            alt="제품 사용 현장"
-            fill
-            className="object-cover"
+          <iframe
+            src="https://www.youtube.com/embed/bZska0PZTV0"
+            title="제품 사용 현장 동영상"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="absolute inset-0 w-full h-full"
           />
-          <div className="absolute inset-0 bg-black/50" />
-
-          {/* Play button + text */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
-            <button
-              type="button"
-              className="w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-[#F4978E] flex items-center justify-center shadow-lg hover:bg-[#e8887f] transition-colors duration-200"
-              aria-label="동영상 재생"
-            >
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 24 24"
-                fill="white"
-                className="ml-1"
-              >
-                <polygon points="5,3 19,12 5,21" />
-              </svg>
-            </button>
-            <p className="text-white text-sm lg:text-base font-medium text-center px-4">
-              우리의 제품이 사용되는 현장을 확인하세요
-            </p>
-          </div>
         </div>
 
         {/* Part 4: Partners */}
