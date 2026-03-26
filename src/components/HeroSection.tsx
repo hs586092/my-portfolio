@@ -44,13 +44,21 @@ export default function HeroSection() {
 
           {/* Left — Text area */}
           <div className="space-y-6 lg:space-y-7">
-            {/* Trust badge */}
-            <div className="animate-hero-fade-in opacity-0 [animation-delay:100ms]">
+            {/* Trust badges */}
+            <div className="animate-hero-fade-in opacity-0 [animation-delay:100ms] flex flex-col sm:flex-row gap-2">
               <span className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-[#FFF0ED] text-[#F4978E] text-xs font-medium rounded-full">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                   <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
                 </svg>
                 전국 20여 키즈카페 납품
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-[#FFF3E0] text-[#E6960A] text-xs font-medium rounded-full">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M5 3h14l-1.5 5H6.5L5 3zM6.5 8h11l-1 3H7.5L6.5 8zM8.5 11h7l-.5 2h-6l-.5-2z" />
+                  <rect x="11" y="13" width="2" height="4" />
+                  <rect x="8" y="17" width="8" height="2" rx="1" />
+                </svg>
+                쿠팡 논슬립양말 판매 1위
               </span>
             </div>
 
