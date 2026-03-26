@@ -143,7 +143,6 @@ const reviews = [
 ];
 
 export default function TrustSection() {
-  const { ref: videoRef, isVisible: videoVisible } = useScrollAnimation();
   const { ref: logosRef, isVisible: logosVisible } = useScrollAnimation();
   const { ref: reviewRef, isVisible: reviewVisible } = useScrollAnimation();
   const reviewScrollRef = useRef<HTMLDivElement>(null);
@@ -161,24 +160,7 @@ export default function TrustSection() {
   return (
     <section id="trust" className="bg-warm-bg py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Part 1: Video Banner */}
-        <div
-          ref={videoRef}
-          className={`relative w-full aspect-video max-h-[400px] rounded-3xl overflow-hidden mb-20 transition-all duration-700 ${
-            videoVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
-          style={{ transitionDelay: videoVisible ? "200ms" : "0ms" }}
-        >
-          <iframe
-            src="https://www.youtube.com/embed/bZska0PZTV0"
-            title="제품 사용 현장 동영상"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="absolute inset-0 w-full h-full"
-          />
-        </div>
-
-        {/* Part 4: Partners */}
+        {/* Partners */}
         <div
           ref={logosRef}
           className={`bg-white rounded-2xl py-14 px-8 shadow-[0_2px_20px_rgba(0,0,0,0.04)] mb-16 transition-all duration-700 ${
