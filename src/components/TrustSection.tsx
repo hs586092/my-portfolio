@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Image from "next/image";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const stats = [
@@ -11,23 +10,6 @@ const stats = [
   { value: "99%", label: "고객 만족도" },
 ];
 
-const galleryImages = [
-  {
-    src: "https://images.unsplash.com/photo-1566140967404-b8b3932483f5?w=600&q=80",
-    alt: "키즈카페에서 노는 아이들",
-    span: "row-span-2",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=400&q=80",
-    alt: "컬러풀한 양말 디스플레이",
-    span: "",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=400&q=80",
-    alt: "어린이집 실내 놀이",
-    span: "",
-  },
-];
 
 const kidsCafePartners = [
   {
@@ -198,69 +180,27 @@ export default function TrustSection() {
           신뢰와 실적
         </h2>
 
-        {/* Part 2: Stats + Gallery (2 columns) */}
+        {/* Part 2: Stats — 4 cards in a row */}
         <div
           ref={statsRef}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-16"
         >
-          {/* Left: Stats 2x2 */}
-          <div className="grid grid-cols-2 gap-4 lg:gap-6">
-            {stats.map((stat, index) => (
-              <div
-                key={stat.label}
-                className={`text-center bg-white rounded-2xl py-8 lg:py-10 px-4 shadow-[0_2px_20px_rgba(0,0,0,0.04)] transition-all duration-700 ${
-                  statsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-                }`}
-                style={{ transitionDelay: statsVisible ? `${200 + index * 120}ms` : "0ms" }}
-              >
-                <div className="text-3xl lg:text-4xl font-semibold text-[#F4978E] mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-warm-gray">
-                  {stat.label}
-                </div>
+          {stats.map((stat, index) => (
+            <div
+              key={stat.label}
+              className={`text-center bg-white rounded-2xl py-10 lg:py-12 px-4 shadow-[0_2px_20px_rgba(0,0,0,0.04)] transition-all duration-700 ${
+                statsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+              style={{ transitionDelay: statsVisible ? `${200 + index * 120}ms` : "0ms" }}
+            >
+              <div className="text-4xl lg:text-5xl font-semibold text-[#F4978E] mb-2">
+                {stat.value}
               </div>
-            ))}
-          </div>
-
-          {/* Right: Photo Gallery */}
-          <div
-            className={`grid grid-cols-2 grid-rows-2 gap-3 min-h-[300px] lg:min-h-[360px] transition-all duration-700 ${
-              statsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
-            style={{ transitionDelay: statsVisible ? "600ms" : "0ms" }}
-          >
-            {/* Large image — spans 2 rows */}
-            <div className="row-span-2 relative rounded-2xl overflow-hidden bg-[#f9f8f6] group">
-              <Image
-                src={galleryImages[0].src}
-                alt={galleryImages[0].alt}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+              <div className="text-sm text-warm-gray">
+                {stat.label}
+              </div>
             </div>
-            {/* Top right */}
-            <div className="relative rounded-2xl overflow-hidden bg-[#f9f8f6] group">
-              <Image
-                src={galleryImages[1].src}
-                alt={galleryImages[1].alt}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-            </div>
-            {/* Bottom right */}
-            <div className="relative rounded-2xl overflow-hidden bg-[#f9f8f6] group">
-              <Image
-                src={galleryImages[2].src}
-                alt={galleryImages[2].alt}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* Part 3: Video Banner */}
