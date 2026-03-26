@@ -3,13 +3,6 @@
 import { useRef, useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-const stats = [
-  { value: "10+", label: "업력(년)" },
-  { value: "500+", label: "누적 거래처" },
-  { value: "100만+", label: "누적 판매량" },
-  { value: "99%", label: "고객 만족도" },
-];
-
 
 const kidsCafePartners = [
   {
@@ -150,8 +143,6 @@ const reviews = [
 ];
 
 export default function TrustSection() {
-  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
-  const { ref: statsRef, isVisible: statsVisible } = useScrollAnimation();
   const { ref: videoRef, isVisible: videoVisible } = useScrollAnimation();
   const { ref: logosRef, isVisible: logosVisible } = useScrollAnimation();
   const { ref: reviewRef, isVisible: reviewVisible } = useScrollAnimation();
@@ -170,40 +161,7 @@ export default function TrustSection() {
   return (
     <section id="trust" className="bg-warm-bg py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Part 1: Title */}
-        <h2
-          ref={titleRef}
-          className={`text-3xl lg:text-4xl font-semibold text-dark mb-16 text-center transition-all duration-700 ${
-            titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
-        >
-          신뢰와 실적
-        </h2>
-
-        {/* Part 2: Stats — 4 cards in a row */}
-        <div
-          ref={statsRef}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-16"
-        >
-          {stats.map((stat, index) => (
-            <div
-              key={stat.label}
-              className={`text-center bg-white rounded-2xl py-10 lg:py-12 px-4 shadow-[0_2px_20px_rgba(0,0,0,0.04)] transition-all duration-700 ${
-                statsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-              }`}
-              style={{ transitionDelay: statsVisible ? `${200 + index * 120}ms` : "0ms" }}
-            >
-              <div className="text-4xl lg:text-5xl font-semibold text-[#F4978E] mb-2">
-                {stat.value}
-              </div>
-              <div className="text-sm text-warm-gray">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Part 3: Video Banner */}
+        {/* Part 1: Video Banner */}
         <div
           ref={videoRef}
           className={`relative w-full aspect-video max-h-[400px] rounded-3xl overflow-hidden mb-20 transition-all duration-700 ${
