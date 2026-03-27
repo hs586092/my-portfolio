@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const menuItems = [
-  { label: "회사소개", href: "#top" },
+  { label: "회사소개", href: "/about" },
   { label: "사업영역", href: "#business" },
   { label: "신뢰와 실적", href: "#trust" },
   { label: "문의하기", href: "#contact" },
@@ -44,8 +46,12 @@ export default function Navigation() {
   }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
     setIsOpen(false);
+
+    // 외부 페이지 링크는 기본 동작 유지
+    if (!href.startsWith("#")) return;
+
+    e.preventDefault();
 
     if (href === "#top") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -65,14 +71,19 @@ export default function Navigation() {
         <div className="max-w-7xl mx-auto px-4 lg:px-12">
           <div className="flex items-center justify-between h-16 gap-4">
             {/* Logo */}
-            <a
-              href="#top"
-              onClick={(e) => handleClick(e, "#top")}
+            <Link
+              href="/"
+              onClick={(e) => {
+                if (window.location.pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
               className="text-lg lg:text-xl text-dark flex-shrink-0 font-[900] tracking-tight"
               style={{ fontFamily: "var(--font-playfair), serif" }}
             >
               Balsan market
-            </a>
+            </Link>
 
             {/* Search — desktop */}
             <div className="hidden md:flex flex-1 max-w-lg mx-6">
