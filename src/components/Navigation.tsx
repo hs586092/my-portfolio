@@ -186,6 +186,13 @@ export default function Navigation() {
               카테고리
             </button>
 
+            <Link
+              href="/about"
+              className="hidden md:block text-sm text-dark hover:text-accent transition-colors duration-200 flex-shrink-0"
+            >
+              회사소개
+            </Link>
+
             <div className="hidden md:block w-px h-5 bg-warm-border flex-shrink-0" />
 
             {/* Tabs */}
@@ -205,12 +212,6 @@ export default function Navigation() {
                     {tab}
                   </button>
                 ))}
-                <Link
-                  href="/about"
-                  className="px-3 py-1.5 text-sm whitespace-nowrap text-dark hover:text-accent transition-colors duration-200"
-                >
-                  회사소개
-                </Link>
               </div>
             </div>
 
