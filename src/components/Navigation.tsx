@@ -212,6 +212,13 @@ export default function Navigation() {
             <span className="hidden lg:block text-xs text-warm-gray flex-shrink-0">
               전국 무료배송
             </span>
+            <div className="hidden lg:block w-px h-5 bg-warm-border flex-shrink-0" />
+            <Link
+              href="/about"
+              className="hidden lg:block text-sm text-dark hover:text-accent transition-colors duration-200 flex-shrink-0"
+            >
+              회사소개
+            </Link>
           </div>
         </div>
       </nav>
