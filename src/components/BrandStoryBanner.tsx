@@ -10,7 +10,7 @@ export default function BrandStoryBanner() {
     <section ref={ref} className="relative">
       <Link
         href="/about"
-        className="block py-14 md:py-16 transition-colors duration-300 hover:brightness-[1.02]"
+        className="block py-16 lg:py-20 transition-colors duration-300 hover:brightness-[1.02]"
         style={{ backgroundColor: "rgba(244,151,142,0.06)" }}
       >
         <div

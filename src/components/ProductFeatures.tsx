@@ -6,35 +6,35 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const features = [
   {
     number: "01",
-    title: "확실한 미끄럼방지 기능",
+    title: "확실한 미끄럼방지 설계",
     description:
-      "에너지 넘치는 우리 아이들, 언제나 미끄러질 걱정 없이 놀 수 있게 만들었습니다. 발바닥부분이 짱짱하고 넓습니다.",
+      "발바닥 전면에 넓고 촘촘한 실리콘 패드를 적용해, 활동량이 많은 아이들도 미끄러질 걱정 없이 안전하게 사용할 수 있습니다.",
     image: "/images/feature-01.png",
-    alt: "확실한 미끄럼방지 기능",
+    alt: "확실한 미끄럼방지 설계",
   },
   {
     number: "02",
-    title: "다양하고 선명한 컬러 구성",
+    title: "선명한 컬러, 다양한 선택지",
     description:
-      "우리아이 취향에 맞게 매일매일 색다르게 골라 신을 수 있습니다.",
+      "운영 환경과 연령대에 맞춰 고를 수 있도록 7가지 이상의 컬러 라인업을 준비했습니다. 일괄 납품 시 색상 구성 조율이 가능합니다.",
     image: "/images/feature-02.png",
-    alt: "다양하고 선명한 컬러 구성",
+    alt: "선명한 컬러 구성",
   },
   {
     number: "03",
-    title: "어린이 제품 적합검사 완료",
+    title: "KC 어린이 제품 적합검사 합격",
     description:
-      "국가공인기관의 안전인증 검사를 모두 합격한 안전한 키즈카페 양말입니다. 알러지성 염료, 아릴아민, pH, 폼알데하이드 등 전 항목 합격.",
+      "국가공인기관 안전인증 전 항목 합격. pH · 폼알데하이드 · 알러지성 염료 · 아릴아민 등 유해물질 검사를 모두 통과한 제품입니다.",
     image: "/images/safety-cert-1.png",
-    alt: "어린이 제품 적합검사 완료",
+    alt: "KC 어린이 제품 적합검사 합격",
   },
   {
     number: "04",
-    title: "전국 프랜차이즈 키즈카페 납품중",
+    title: "전국 키즈카페 · 기관 납품 실적",
     description:
-      "대형 프랜차이즈 키즈카페에 납품중인 제품입니다. 키즈카페, 태권도장, 체육학원등 전문매장에서 먼저 알아봐주신 미끄럼방지 양말입니다.",
+      "대형 프랜차이즈 키즈카페, 어린이집, 태권도장, 체육학원 등 전문 현장에서 꾸준히 선택받고 있습니다.",
     image: "/images/feature-04.png",
-    alt: "전국 프랜차이즈 키즈카페 납품중",
+    alt: "전국 키즈카페 납품 실적",
   },
 ];
 
@@ -46,26 +46,29 @@ export default function ProductFeatures() {
       <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Title */}
         <div
-          className={`text-center mb-16 transition-all duration-700 ${
+          className={`text-center mb-16 lg:mb-20 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          <h2 className="text-3xl lg:text-4xl font-semibold text-dark mb-3">
-            왜 <span className="text-[#F4978E]">발산마켓</span>인가?
+          <span className="inline-block text-[11px] font-semibold tracking-[0.14em] uppercase text-accent mb-3">
+            Why 발산마켓
+          </span>
+          <h2 className="text-3xl lg:text-[2.5rem] font-semibold text-ink tracking-tight leading-tight mb-4">
+            품질을 만드는 4가지 기준
           </h2>
-          <p className="text-sm text-warm-gray">
-            전문가가 인정한 품질, 4가지 핵심 특징
+          <p className="text-base text-warm-gray leading-relaxed">
+            발산마켓이 제품을 고르고 공급할 때 지키는 원칙입니다.
           </p>
         </div>
 
         {/* Features */}
-        <div className="space-y-16 lg:space-y-20">
+        <div className="space-y-20 lg:space-y-24">
           {features.map((feature, index) => {
             const isReversed = index % 2 === 1;
             return (
               <div
                 key={feature.number}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center transition-all duration-700 ${
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center transition-all duration-700 ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                 }`}
                 style={{
@@ -73,52 +76,28 @@ export default function ProductFeatures() {
                 }}
               >
                 {/* Text */}
-                <div
-                  className={`${isReversed ? "lg:order-2" : "lg:order-1"}`}
-                >
-                  <span className="text-sm font-semibold text-[#F4978E] mb-3 block">
+                <div className={isReversed ? "lg:order-2" : "lg:order-1"}>
+                  {/* Number chip */}
+                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-accent-soft text-accent text-base font-bold tracking-tight mb-5">
                     {feature.number}
-                  </span>
-                  <h3 className="text-2xl lg:text-3xl font-semibold text-dark mb-4 leading-snug">
+                  </div>
+                  <h3 className="text-2xl lg:text-[1.75rem] font-semibold text-ink mb-4 leading-snug tracking-tight">
                     {feature.title}
                   </h3>
-                  <p className="text-warm-gray font-light leading-relaxed">
+                  <p className="text-base text-warm-gray leading-relaxed max-w-xl">
                     {feature.description}
                   </p>
                 </div>
 
                 {/* Image */}
-                <div
-                  className={`${isReversed ? "lg:order-1" : "lg:order-2"}`}
-                >
-                  <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#f9f8f6]">
+                <div className={isReversed ? "lg:order-1" : "lg:order-2"}>
+                  <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-warm-bg border border-warm-border/60">
                     <Image
                       src={feature.image}
                       alt={feature.alt}
                       fill
                       className="object-cover"
                     />
-                    {/* Fallback overlay for missing images */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-[#f9f8f6] peer-[.loaded]:hidden">
-                      <div className="text-center">
-                        <svg
-                          width="40"
-                          height="40"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1"
-                          className="mx-auto text-warm-gray/40 mb-2"
-                        >
-                          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                          <circle cx="8.5" cy="8.5" r="1.5" />
-                          <polyline points="21 15 16 10 5 21" />
-                        </svg>
-                        <span className="text-xs text-warm-gray/60">
-                          이미지 준비중
-                        </span>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>

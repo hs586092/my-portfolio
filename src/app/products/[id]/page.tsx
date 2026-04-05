@@ -320,34 +320,37 @@ export default function ProductDetailPage() {
             <div className="space-y-8">
               <div>
                 <h3 className="text-lg font-semibold text-dark mb-3">
+                  최소 주문 수량
+                </h3>
+                <p className="text-sm text-warm-gray">
+                  {product.minOrder}
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-dark mb-3">
                   배송 안내
                 </h3>
                 <ul className="space-y-2 text-sm text-warm-gray">
-                  <li>전국 무료배송</li>
-                  <li>주문 확인 후 1~3 영업일 내 출고</li>
-                  <li>출고 후 1~2일 내 수령 가능</li>
-                  <li>대량 주문의 경우 별도 협의 필요</li>
+                  <li>10,000원 이상 무료배송</li>
+                  <li>CJ대한통운 택배사를 통해 배송 (배송 후 1~2일 수령)</li>
+                  <li>당일배송 마감시간: 오후 1시</li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-dark mb-3">
                   교환/반품
                 </h3>
-                <ul className="space-y-2 text-sm text-warm-gray">
-                  <li>미개봉 제품에 한해 수령 후 7일 이내 교환 가능</li>
-                  <li>교환 배송비 무료</li>
-                </ul>
+                <p className="text-sm text-warm-gray">
+                  {product.exchangePolicy}
+                </p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-dark mb-3">
                   세금계산서
                 </h3>
-                <ul className="space-y-2 text-sm text-warm-gray">
-                  <li>
-                    사업자등록번호 확인 후 세금계산서 발행 가능
-                  </li>
-                  <li>주문 시 사업자등록증 사본을 함께 보내주세요</li>
-                </ul>
+                <p className="text-sm text-warm-gray">
+                  주문 → 입금 → 발송 → 세금계산서 발행 순으로 진행됩니다.
+                </p>
               </div>
             </div>
           )}

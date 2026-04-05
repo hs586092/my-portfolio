@@ -18,6 +18,8 @@ export interface Product {
   sizes: ProductSize[];
   rating: number;
   reviewCount: number;
+  minOrder: string;
+  exchangePolicy: string;
 }
 
 const products: Product[] = [
@@ -45,6 +47,8 @@ const products: Product[] = [
     ],
     rating: 4.72,
     reviewCount: 999,
+    minOrder: "최소 5켤레부터 주문 가능합니다.",
+    exchangePolicy: "미개봉 제품에 한해 수령 후 7일 이내 교환 가능합니다. 교환 배송비는 무료입니다.",
   },
   {
     id: 2,
@@ -70,6 +74,8 @@ const products: Product[] = [
     ],
     rating: 4.65,
     reviewCount: 128,
+    minOrder: "최소 3켤레부터 주문 가능합니다.",
+    exchangePolicy: "미개봉 제품에 한해 수령 후 7일 이내 교환 가능합니다. 교환 배송비는 무료입니다.",
   },
   {
     id: 3,
@@ -96,6 +102,8 @@ const products: Product[] = [
     ],
     rating: 4.84,
     reviewCount: 256,
+    minOrder: "최소 10켤레부터 주문 가능합니다. 대량 주문(100켤레 이상) 시 추가 할인이 적용됩니다.",
+    exchangePolicy: "미개봉 제품에 한해 수령 후 7일 이내 교환 가능합니다. 교환 배송비는 무료입니다. 정확한 사이즈 안내는 사이즈 가이드를 참고해주세요.",
   },
 ];
 
