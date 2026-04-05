@@ -1,21 +1,36 @@
 @import "tailwindcss";
 
 :root {
+  /* Brand */
   --color-navy: #1a1a1a;
   --color-gold: #c9a96e;
   --color-accent: #F4978E;
   --color-accent-soft: #FFF0ED;
-  --color-ink: #1a1a1a;
+
+  /* Ink scale */
+  --color-ink: #0F0F10;
   --color-dark: #2c2c2c;
   --color-warm-gray: #8a8580;
   --color-warm-bg: #f9f8f6;
   --color-warm-border: #e8e4e0;
+
   --background: #ffffff;
   --foreground: #2c2c2c;
 
-  /* Unified card shadow tokens */
+  /* Elevation */
   --shadow-card: 0 1px 2px rgba(17, 17, 17, 0.04), 0 8px 24px rgba(17, 17, 17, 0.04);
   --shadow-card-hover: 0 2px 4px rgba(17, 17, 17, 0.04), 0 16px 32px rgba(17, 17, 17, 0.06);
+
+  /* Fluid typography */
+  --text-display: clamp(2.5rem, 5vw + 1rem, 5rem);
+  --text-h1: clamp(2rem, 3vw + 1rem, 3.25rem);
+  --text-h2: clamp(1.5rem, 1.5vw + 1rem, 2rem);
+  --text-lead: clamp(1rem, 0.5vw + 0.875rem, 1.25rem);
+
+  /* Section rhythm */
+  --space-section: clamp(5rem, 8vw, 8rem);
+  --space-section-tight: clamp(4rem, 6vw, 6rem);
+  --space-stack-xl: clamp(3rem, 5vw, 5rem);
 }
 
 @theme inline {
@@ -38,14 +53,75 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  font-feature-settings: "ss01", "cv01", "cv11";
 }
 
-/* Hero fade-in animation */
+/* ──────────────────────────────────────────────
+   Typography utility classes (fluid + editorial)
+   ────────────────────────────────────────────── */
+.text-display {
+  font-size: var(--text-display);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.text-h1 {
+  font-size: var(--text-h1);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.text-h2 {
+  font-size: var(--text-h2);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.text-lead {
+  font-size: var(--text-lead);
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+}
+
+.text-eyebrow {
+  font-size: 0.6875rem; /* 11px */
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* ──────────────────────────────────────────────
+   Section padding helpers
+   ────────────────────────────────────────────── */
+.py-section {
+  padding-top: var(--space-section);
+  padding-bottom: var(--space-section);
+}
+
+.py-section-tight {
+  padding-top: var(--space-section-tight);
+  padding-bottom: var(--space-section-tight);
+}
+
+.space-stack-xl > * + * {
+  margin-top: var(--space-stack-xl);
+}
+
+/* ──────────────────────────────────────────────
+   Hero animations (kept)
+   ────────────────────────────────────────────── */
 @keyframes hero-fade-in {
   from {
     opacity: 0;
@@ -58,28 +134,13 @@ body {
 }
 
 .animate-hero-fade-in {
-  animation: hero-fade-in 0.6s ease-out forwards;
+  animation: hero-fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Hero floating illustration animation */
-@keyframes hero-float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
-}
-
-.animate-hero-float {
-  animation: hero-float 4s ease-in-out infinite;
-}
-
-/* Hero scale-in animation for product image */
 @keyframes hero-scale-in {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.96);
   }
   to {
     opacity: 1;
@@ -88,5 +149,19 @@ body {
 }
 
 .animate-hero-scale-in {
-  animation: hero-scale-in 0.7s ease-out forwards;
+  animation: hero-scale-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Marquee for partner logo wall (subtle horizontal drift on hover pause) */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }
