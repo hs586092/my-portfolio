@@ -22,8 +22,8 @@ type Product = {
 
 const products: Product[] = [
   {
-    name: "프리미엄 미끄럼방지 양말 (5켤레)",
-    description: "어린이집 필수템, 실리콘 미끄럼방지 패드 적용",
+    name: "프리미엄 미끄럼방지 양말",
+    description: "어린이집 필수템, 실리콘 미끄럼방지 패드",
     alt: "프리미엄 미끄럼방지 양말",
     badge: "BEST",
     price: null,
@@ -34,7 +34,7 @@ const products: Product[] = [
     illustration: 1,
   },
   {
-    name: "스트라이프 미끄럼방지 양말 (3켤레)",
+    name: "스트라이프 미끄럼방지 양말",
     description: "감각적인 스트라이프 패턴, 통기성 우수",
     alt: "스트라이프 양말",
     badge: "NEW",
@@ -58,7 +58,7 @@ const products: Product[] = [
     reviews: "256",
   },
   {
-    name: "하트 패턴 미끄럼방지 양말 (3켤레)",
+    name: "하트 패턴 미끄럼방지 양말",
     description: "사랑스러운 하트 패턴, 부드러운 촉감",
     alt: "하트 패턴 양말",
     badge: null,
@@ -75,136 +75,161 @@ export default function BusinessSection() {
   const { ref, isVisible } = useScrollAnimation();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const scrollRight = () => {
-    scrollContainerRef.current?.scrollBy({ left: 300, behavior: "smooth" });
+  const scrollBy = (delta: number) => {
+    scrollContainerRef.current?.scrollBy({ left: delta, behavior: "smooth" });
   };
 
   return (
-    <section id="business" className="bg-warm-bg py-20 lg:py-28">
+    <section id="business" className="bg-warm-bg py-section">
       <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Section Title */}
+        {/* Split header: title left, navigation right */}
         <div
-          className={`mb-10 lg:mb-12 transition-all duration-700 ${
+          className={`flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12 lg:mb-16 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          <span className="inline-block text-[11px] font-semibold tracking-[0.14em] uppercase text-accent mb-3">
-            Product Lineup
-          </span>
-          <h2 className="text-3xl lg:text-[2.5rem] font-semibold text-ink tracking-tight leading-tight">
-            현장에서 가장 많이 찾는 상품
-          </h2>
-          <p className="text-base text-warm-gray mt-3 leading-relaxed">
-            어린이집 · 키즈카페에서 꾸준히 주문해주시는 주력 라인입니다.
-          </p>
+          <div className="max-w-2xl">
+            <span className="text-eyebrow text-accent">Product Lineup</span>
+            <h2 className="text-h1 text-ink mt-3 mb-4">
+              현장에서 가장 많이 찾는 상품
+            </h2>
+            <p className="text-lead text-warm-gray">
+              어린이집 · 키즈카페에서 꾸준히 주문해 주시는 주력 라인입니다.
+            </p>
+          </div>
+
+          {/* Scroll controls */}
+          <div className="hidden lg:flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => scrollBy(-320)}
+              aria-label="이전 상품"
+              className="w-12 h-12 flex items-center justify-center rounded-full border border-warm-border bg-white text-ink hover:border-ink hover:bg-ink hover:text-white transition-all duration-300"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollBy(320)}
+              aria-label="다음 상품"
+              className="w-12 h-12 flex items-center justify-center rounded-full border border-warm-border bg-white text-ink hover:border-ink hover:bg-ink hover:text-white transition-all duration-300"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
         </div>
 
-        {/* Product Cards — horizontal scroll */}
-        <div className="relative">
+        {/* Product Cards — larger, refined */}
+        <div className="relative -mx-6 lg:mx-0">
           <div
             ref={scrollContainerRef}
-            className="flex gap-5 overflow-x-auto pb-4 scrollbar-hide"
+            className="flex gap-5 lg:gap-6 overflow-x-auto pb-4 px-6 lg:px-0 scrollbar-hide snap-x snap-mandatory"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {products.map((product, index) => (
               <Link
                 key={index}
                 href={`/products/${index + 1}`}
-                className={`group flex-shrink-0 w-[240px] md:w-[270px] bg-white border border-warm-border/60 rounded-2xl p-4 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-300 ${
+                className={`group relative flex-shrink-0 w-[280px] md:w-[320px] bg-white border border-warm-border/80 rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-500 snap-start ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                 }`}
                 style={{ transitionDelay: isVisible ? `${200 + index * 120}ms` : "0ms" }}
               >
-                {/* Image */}
-                <div className="relative aspect-[4/5] bg-warm-bg rounded-xl overflow-hidden mb-4">
+                {/* Image block */}
+                <div className="relative aspect-square bg-warm-bg overflow-hidden">
                   {product.image ? (
                     <Image
                       src={product.image}
                       alt={product.alt}
                       fill
-                      className="object-contain p-3 transition-transform duration-500 group-hover:scale-105"
+                      sizes="320px"
+                      className="object-contain p-6 transition-transform duration-700 group-hover:scale-[1.05]"
                     />
                   ) : product.illustration ? (
-                    <div className="w-full h-full flex items-center justify-center p-5">
+                    <div className="absolute inset-0 flex items-center justify-center p-8">
                       <SockIllustration
                         variant={product.illustration}
-                        className="w-full h-full transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full transition-transform duration-700 group-hover:scale-[1.05]"
                       />
                     </div>
                   ) : null}
 
-                  {/* Product Badge (BEST/NEW) */}
+                  {/* Badge */}
                   {product.badge && (
-                    <span className="absolute top-3 left-3 px-2.5 py-1 bg-ink text-white text-[10px] font-semibold tracking-wider rounded-full">
+                    <span className="absolute top-4 left-4 px-3 py-1.5 bg-ink text-white text-[10px] font-bold tracking-[0.12em] rounded-full">
                       {product.badge}
                     </span>
                   )}
+
+                  {/* Arrow button — shown on hover */}
+                  <div className="absolute bottom-4 right-4 w-11 h-11 rounded-full bg-white border border-warm-border flex items-center justify-center shadow-card opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F0F10" strokeWidth="2" strokeLinecap="round">
+                      <path d="M7 17L17 7M7 7h10v10" />
+                    </svg>
+                  </div>
                 </div>
 
-                {/* Product Name */}
-                <p className="text-sm font-semibold text-ink mb-1.5 line-clamp-2 leading-snug">
-                  {product.name}
-                </p>
+                {/* Info */}
+                <div className="p-6">
+                  <p className="text-base font-semibold text-ink leading-snug line-clamp-1">
+                    {product.name}
+                  </p>
+                  <p className="text-sm text-warm-gray mt-1.5 line-clamp-1">
+                    {product.description}
+                  </p>
 
-                {/* Description */}
-                <p className="text-xs text-warm-gray mb-3 line-clamp-1 leading-snug">
-                  {product.description}
-                </p>
+                  {/* Divider */}
+                  <div className="h-px bg-warm-border my-5" />
 
-                {/* Price or Inquiry */}
-                <div className="mb-3 min-h-[48px]">
+                  {/* Price or inquiry */}
                   {product.price ? (
-                    <>
-                      <p className="text-ink font-bold text-base">
-                        {product.price.toLocaleString()}원
-                        <span className="text-xs font-normal text-warm-gray ml-1">
-                          / {product.unit}
+                    <div>
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="text-xl font-bold text-ink tracking-tight">
+                          {product.price.toLocaleString()}
                         </span>
-                      </p>
-                      <p className="text-xs text-warm-gray mt-0.5">
+                        <span className="text-sm text-warm-gray">원 / {product.unit}</span>
+                      </div>
+                      <p className="text-xs text-warm-gray mt-1">
                         1켤레당 {product.unitPrice?.toLocaleString()}원
                       </p>
-                    </>
+                    </div>
                   ) : (
-                    <p className="text-sm text-warm-gray leading-snug">
-                      문의 시 수량별 단가 안내
-                    </p>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-semibold text-ink">
+                        문의 시 견적
+                      </span>
+                      <span className="text-xs text-warm-gray">· 수량별 단가</span>
+                    </div>
                   )}
-                </div>
 
-                {/* Bulk Discount Badge */}
-                {product.bulkDiscount && (
-                  <div className="mb-3">
-                    <span className="inline-block px-3 py-1 bg-accent-soft text-accent text-[11px] font-medium rounded-full">
-                      {product.bulkDiscount}
-                    </span>
-                  </div>
-                )}
+                  {/* Bulk discount */}
+                  {product.bulkDiscount && (
+                    <div className="mt-4">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-accent-soft text-accent text-[11px] font-semibold rounded-full">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                          <path d="M20 6L9 17l-5-5" />
+                        </svg>
+                        {product.bulkDiscount}
+                      </span>
+                    </div>
+                  )}
 
-                {/* Reviews */}
-                {product.reviews && (
-                  <div className="flex items-center gap-1.5 text-xs text-warm-gray pt-3 border-t border-warm-border/60">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                  {/* Meta bar */}
+                  <div className="mt-5 pt-4 border-t border-warm-border flex items-center gap-1.5 text-xs text-warm-gray">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
                       <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
                     </svg>
                     후기 {product.reviews}
                   </div>
-                )}
+                </div>
               </Link>
             ))}
           </div>
-
-          {/* Scroll Right Button */}
-          <button
-            type="button"
-            onClick={scrollRight}
-            aria-label="다음 상품"
-            className="hidden md:flex absolute -right-4 top-1/3 -translate-y-1/2 w-11 h-11 bg-white border border-warm-border rounded-full items-center justify-center shadow-card hover:border-accent hover:text-accent transition-colors"
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
         </div>
       </div>
     </section>
