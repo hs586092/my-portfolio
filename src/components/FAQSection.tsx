@@ -37,6 +37,7 @@ function AccordionItem({
   onClick,
   delay,
   visible,
+  index,
 }: {
   question: string;
   answer: string;
@@ -44,6 +45,7 @@ function AccordionItem({
   onClick: () => void;
   delay: number;
   visible: boolean;
+  index: number;
 }) {
   const contentRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
@@ -64,29 +66,38 @@ function AccordionItem({
       <button
         type="button"
         onClick={onClick}
-        className="w-full flex items-center justify-between py-5 text-left gap-4"
+        className="group w-full flex items-center justify-between py-7 text-left gap-6"
       >
+        <div className="flex items-start gap-5 flex-1 min-w-0">
+          <span className="text-xs font-bold text-accent tracking-widest mt-1">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <span
+            className={`text-base lg:text-lg font-semibold transition-colors duration-300 ${
+              isOpen ? "text-accent" : "text-ink group-hover:text-accent"
+            }`}
+          >
+            {question}
+          </span>
+        </div>
         <span
-          className={`font-semibold text-sm lg:text-base transition-colors duration-300 ${
-            isOpen ? "text-[#F4978E]" : "text-dark"
+          className={`relative flex-shrink-0 w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 ${
+            isOpen
+              ? "bg-accent border-accent text-white rotate-45"
+              : "border-warm-border text-ink group-hover:border-accent"
           }`}
         >
-          {question}
-        </span>
-        <span
-          className={`flex-shrink-0 text-xl leading-none transition-colors duration-300 ${
-            isOpen ? "text-[#F4978E]" : "text-warm-gray"
-          }`}
-        >
-          {isOpen ? "−" : "+"}
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+            <path d="M12 5v14M5 12h14" />
+          </svg>
         </span>
       </button>
       <div
-        className="overflow-hidden transition-[height] duration-300 ease-in-out"
+        className="overflow-hidden transition-[height] duration-400 ease-out"
         style={{ height }}
       >
-        <div ref={contentRef} className="pb-5">
-          <p className="text-sm font-light text-warm-gray leading-relaxed">
+        <div ref={contentRef} className="pb-7 pl-12 pr-14">
+          <p className="text-sm lg:text-base text-warm-gray leading-relaxed">
             {answer}
           </p>
         </div>
@@ -96,42 +107,66 @@ function AccordionItem({
 }
 
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="faq" className="bg-warm-bg py-20 lg:py-28">
-      <div ref={ref} className="max-w-[820px] mx-auto px-6">
-        <div
-          className={`text-center mb-14 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
-        >
-          <span className="inline-block text-[11px] font-semibold tracking-[0.14em] uppercase text-accent mb-3">
-            FAQ
-          </span>
-          <h2 className="text-3xl lg:text-[2.5rem] font-semibold text-ink tracking-tight leading-tight mb-4">
-            자주 묻는 질문
-          </h2>
-          <p className="text-base text-warm-gray leading-relaxed">
-            궁금한 점이 있으시면 먼저 확인해 보세요.
-          </p>
-        </div>
+    <section id="faq" className="bg-warm-bg py-section">
+      <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          {/* Left: sticky title */}
+          <div className="lg:col-span-4">
+            <div className="lg:sticky lg:top-24">
+              <span className="text-eyebrow text-accent">FAQ</span>
+              <h2 className="text-h1 text-ink mt-3 mb-5">
+                자주 묻는
+                <br />
+                질문
+              </h2>
+              <p className="text-base text-warm-gray leading-relaxed mb-8 max-w-sm">
+                궁금한 점이 있으시면 먼저 확인해 보세요.
+                답변이 더 필요하시면 아래로 바로 문의해 주세요.
+              </p>
+              <a
+                href="#contact"
+                className="group inline-flex items-center gap-2 text-sm font-semibold text-ink hover:text-accent transition-colors"
+              >
+                문의하기
+                <svg
+                  className="transition-transform duration-300 group-hover:translate-x-0.5"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
 
-        <div className="bg-white border border-warm-border/60 rounded-2xl shadow-card px-6 lg:px-8">
-          {faqs.map((faq, index) => (
-            <AccordionItem
-              key={index}
-              question={faq.question}
-              answer={faq.answer}
-              isOpen={openIndex === index}
-              onClick={() =>
-                setOpenIndex(openIndex === index ? null : index)
-              }
-              delay={200 + index * 80}
-              visible={isVisible}
-            />
-          ))}
+          {/* Right: accordions in card */}
+          <div className="lg:col-span-8">
+            <div className="bg-white border border-warm-border rounded-2xl shadow-card px-6 lg:px-10">
+              {faqs.map((faq, index) => (
+                <AccordionItem
+                  key={index}
+                  index={index}
+                  question={faq.question}
+                  answer={faq.answer}
+                  isOpen={openIndex === index}
+                  onClick={() =>
+                    setOpenIndex(openIndex === index ? null : index)
+                  }
+                  delay={200 + index * 80}
+                  visible={isVisible}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
