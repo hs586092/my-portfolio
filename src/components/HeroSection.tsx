@@ -3,164 +3,218 @@
 import Link from "next/link";
 import Image from "next/image";
 
-const stats = [
-  { value: "70만+", label: "연간 판매량" },
-  { value: "20+", label: "납품 키즈카페" },
-  { value: "4.84", label: "고객 평점" },
-];
-
 export default function HeroSection() {
   return (
     <section
       id="about"
-      className="relative bg-white overflow-hidden"
+      className="relative bg-[#FFFDFB] overflow-hidden"
     >
-      {/* Background — subtle warm gradient + grid */}
+      {/* Warm gradient blob — top right */}
       <div
         aria-hidden
-        className="absolute inset-0 pointer-events-none"
+        className="pointer-events-none absolute -top-[220px] -right-[180px] w-[760px] h-[760px] z-0"
         style={{
           background:
-            "radial-gradient(ellipse 90% 60% at 85% 15%, rgba(244,151,142,0.10) 0%, transparent 55%), radial-gradient(ellipse 70% 50% at 10% 90%, rgba(244,151,142,0.05) 0%, transparent 60%)",
+            "radial-gradient(closest-side, #FFE4DD 0%, #FFEFEA 45%, rgba(255,239,234,0) 75%)",
+          filter: "blur(2px)",
         }}
       />
+      {/* Soft warm blob — bottom left */}
       <div
         aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-[0.025]"
+        className="pointer-events-none absolute -bottom-[200px] -left-[160px] w-[520px] h-[520px] z-0"
         style={{
-          backgroundImage:
-            "linear-gradient(to right, #0F0F10 1px, transparent 1px), linear-gradient(to bottom, #0F0F10 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
-          maskImage:
-            "radial-gradient(ellipse 70% 70% at 50% 50%, black 40%, transparent 100%)",
+          background:
+            "radial-gradient(closest-side, #FFF6E6 0%, rgba(255,246,230,0) 70%)",
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-section-tight">
-        {/* Eyebrow — small badge at the very top */}
-        <div className="animate-hero-fade-in opacity-0 [animation-delay:100ms] mb-10 lg:mb-14">
-          <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-warm-border bg-white/70 backdrop-blur-sm">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-70" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
-            </span>
-            <span className="text-eyebrow text-ink/70">
-              B2B · 기관 납품 전문
-            </span>
-          </span>
-        </div>
+      <div className="relative z-[2] max-w-[1320px] mx-auto px-6 lg:px-14 pt-10 lg:pt-14 pb-16 lg:pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-[55fr_45fr] gap-12 items-center">
+          {/* ===== LEFT ===== */}
+          <div className="lg:pr-3">
+            {/* Trust badge */}
+            <div className="animate-hero-fade-in opacity-0 [animation-delay:100ms]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#FAD9D2] bg-[#FFF3F0] py-[7px] pl-2 pr-3.5 text-[13px] font-semibold text-[#E07A70] tracking-[-0.005em]">
+                <span className="inline-flex items-center justify-center w-[18px] h-[18px] rounded-full bg-accent text-white text-[10px] font-extrabold">
+                  ★
+                </span>
+                전국 20개 이상 키즈카페 납품
+              </span>
+            </div>
 
-        {/* Headline grid — editorial asymmetric layout */}
-        <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          {/* LEFT: headline spans 7 cols */}
-          <div className="lg:col-span-7 relative z-10">
-            <h1 className="animate-hero-fade-in opacity-0 [animation-delay:200ms] text-display text-ink">
-              연간 70만 켤레,
-              <br />
-              키즈카페가
-              <br />
-              <span className="relative inline-block">
-                <span className="relative z-10">선택한 양말.</span>
+            {/* Headline */}
+            <h1
+              className="animate-hero-fade-in opacity-0 [animation-delay:200ms] mt-[22px] mb-[18px] font-extrabold text-ink leading-[1.15] tracking-[-0.035em] [text-wrap:balance]"
+              style={{ fontSize: "clamp(42px, 5.2vw, 72px)" }}
+            >
+              연간{" "}
+              <span className="relative whitespace-nowrap text-accent">
+                <span className="relative z-10">700,000+</span>
                 <span
                   aria-hidden
-                  className="absolute left-0 right-0 bottom-[0.08em] h-[0.22em] bg-accent/25 -z-0"
+                  className="absolute left-0 right-0 bottom-1 h-[14px] rounded-[2px] bg-[#FBE3DF] opacity-70 -z-0"
                 />
               </span>
+              <br />
+              켤레 판매
             </h1>
 
-            <p className="animate-hero-fade-in opacity-0 [animation-delay:400ms] mt-8 lg:mt-10 text-lead text-warm-gray max-w-xl">
-              어린이집, 체육관, 키즈카페를 위한 미끄럼방지 양말을
-              <br className="hidden sm:block" />
-              합리적인 단가로 안정적으로 공급합니다.
+            {/* Subtitle */}
+            <p className="animate-hero-fade-in opacity-0 [animation-delay:300ms] max-w-[540px] text-[18px] leading-[1.55] font-normal text-[#5A5252]">
+              키즈카페
+              <span className="inline-block align-middle mx-[10px] mb-[3px] w-1 h-1 rounded-full bg-[#8F8786]" />
+              어린이집
+              <span className="inline-block align-middle mx-[10px] mb-[3px] w-1 h-1 rounded-full bg-[#8F8786]" />
+              실내 체육시설을 위한 미끄럼 방지 양말
             </p>
 
+            {/* Stats card */}
+            <div className="animate-hero-fade-in opacity-0 [animation-delay:400ms] my-[30px] w-max max-w-full rounded-2xl border border-[#EFE7E3] bg-white/60 backdrop-blur-[6px] px-[22px] py-[18px] flex items-center gap-[22px]">
+              <div className="flex flex-col gap-0.5">
+                <div className="flex items-baseline gap-[5px] text-[22px] font-bold tracking-[-0.02em] text-ink">
+                  7 <span className="text-[13px] font-medium text-[#5A5252]">컬러</span>
+                </div>
+                <div className="text-[12px] font-medium uppercase tracking-[0.04em] text-[#8F8786]">
+                  색상
+                </div>
+              </div>
+              <div className="w-px h-[34px] bg-[#EFE7E3]" />
+              <div className="flex flex-col gap-0.5">
+                <div className="flex items-baseline gap-[5px] text-[22px] font-bold tracking-[-0.02em] text-ink">
+                  4 <span className="text-[13px] font-medium text-[#5A5252]">사이즈</span>
+                </div>
+                <div className="text-[12px] font-medium uppercase tracking-[0.04em] text-[#8F8786]">
+                  유아 → 주니어
+                </div>
+              </div>
+              <div className="w-px h-[34px] bg-[#EFE7E3]" />
+              <div className="flex flex-col gap-0.5">
+                <div className="flex items-baseline gap-[5px] text-[22px] font-bold tracking-[-0.02em] text-ink">
+                  4.84
+                  <span className="ml-0.5 text-[11px] tracking-[1px] text-accent">
+                    ★★★★★
+                  </span>
+                </div>
+                <div className="text-[12px] font-medium uppercase tracking-[0.04em] text-[#8F8786]">
+                  구매자 평점
+                </div>
+              </div>
+            </div>
+
             {/* CTAs */}
-            <div className="animate-hero-fade-in opacity-0 [animation-delay:600ms] mt-10 lg:mt-12 flex flex-col sm:flex-row gap-3">
+            <div className="animate-hero-fade-in opacity-0 [animation-delay:500ms] flex flex-wrap items-center gap-3.5">
               <Link
                 href="#contact"
-                className="group inline-flex items-center justify-center gap-2.5 bg-ink text-white px-8 py-4 rounded-full text-sm font-semibold shadow-card hover:shadow-card-hover hover:bg-ink/90 transition-all duration-300"
+                className="group inline-flex items-center gap-2.5 rounded-xl px-6 py-4 text-[15px] font-semibold text-white bg-accent border border-transparent transition-all duration-150 hover:bg-[#E07A70] hover:-translate-y-px"
+                style={{
+                  boxShadow:
+                    "0 8px 24px -10px rgba(244,151,142,.85), inset 0 -2px 0 rgba(0,0,0,.08)",
+                }}
               >
-                대량주문 문의하기
-                <svg
-                  className="transition-transform duration-300 group-hover:translate-x-0.5"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
+                대량주문 문의
+                <span className="transition-transform duration-200 group-hover:translate-x-[3px]">
+                  →
+                </span>
               </Link>
               <Link
                 href="#business"
-                className="inline-flex items-center justify-center gap-2 border border-warm-border text-ink px-8 py-4 rounded-full text-sm font-semibold hover:border-ink hover:bg-warm-bg transition-all duration-300"
+                className="inline-flex items-center gap-2.5 rounded-xl px-6 py-4 text-[15px] font-semibold text-ink bg-transparent border-[1.5px] border-[#DCD3CF] transition-colors duration-200 hover:border-ink"
               >
-                제품 라인업 보기
+                제품 보러가기
               </Link>
             </div>
-          </div>
 
-          {/* RIGHT: product visual spans 5 cols, shifted up/overlapping */}
-          <div className="lg:col-span-5 relative lg:-mt-10">
-            <div className="animate-hero-scale-in opacity-0 [animation-delay:350ms] relative aspect-square max-w-[460px] mx-auto lg:mx-0">
-              {/* Large accent circle */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent-soft to-[#FFE4DE]" />
-
-              {/* Outlined secondary circle */}
-              <div
-                aria-hidden
-                className="absolute inset-[-24px] rounded-full border border-accent/20"
-              />
-
-              <Image
-                src="/images/product-7set.png"
-                alt="7가지 컬러 미끄럼방지 양말"
-                fill
-                sizes="(max-width: 1024px) 80vw, 460px"
-                className="object-contain p-10 relative z-10"
-                priority
-              />
-
-              {/* KC cert floating badge */}
-              <div className="absolute top-6 right-6 z-20 flex items-center gap-2 bg-white rounded-full pl-3 pr-4 py-2.5 shadow-card border border-warm-border/70">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F4978E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-                <span className="text-xs font-semibold text-ink">KC 안전인증</span>
+            {/* Meta row */}
+            <div className="animate-hero-fade-in opacity-0 [animation-delay:600ms] mt-8 flex items-center gap-[18px] text-[13px] text-[#5A5252]">
+              <div className="flex">
+                <span className="inline-block w-7 h-7 rounded-full border-2 border-white bg-[#FFD9A8]" />
+                <span className="inline-block w-7 h-7 rounded-full border-2 border-white -ml-2 bg-[#C7E6D6]" />
+                <span className="inline-block w-7 h-7 rounded-full border-2 border-white -ml-2 bg-[#D6D3F5]" />
+                <span className="inline-block w-7 h-7 rounded-full border-2 border-white -ml-2 bg-[#FBE3DF]" />
               </div>
-
-              {/* Floating tag: "쿠팡 논슬립양말 1위" */}
-              <div className="absolute -left-2 bottom-14 lg:-left-6 z-20 bg-ink text-white rounded-full pl-4 pr-5 py-2.5 shadow-card-hover flex items-center gap-2">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="#F4978E" stroke="none">
-                  <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
-                </svg>
-                <span className="text-xs font-semibold tracking-tight">
-                  쿠팡 논슬립양말 1위
-                </span>
-              </div>
+              전국 키즈 브랜드 구매팀이 신뢰하는 발산마켓
             </div>
           </div>
-        </div>
 
-        {/* Stats strip — floating card that bridges bottom of hero */}
-        <div className="animate-hero-fade-in opacity-0 [animation-delay:800ms] relative mt-16 lg:mt-24">
-          <div className="bg-white border border-warm-border rounded-2xl shadow-card p-6 lg:p-8 grid grid-cols-3 divide-x divide-warm-border">
-            {stats.map((stat) => (
+          {/* ===== RIGHT ===== */}
+          <div className="relative aspect-square w-full max-w-[560px] ml-auto mx-auto lg:mx-0 animate-hero-scale-in opacity-0 [animation-delay:350ms]">
+            {/* Product circle */}
+            <div
+              className="absolute inset-0 rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle at 30% 30%, #FFE6E0 0%, #FAD0C7 60%, #F4B5AA 100%)",
+                boxShadow:
+                  "inset 0 -30px 60px rgba(224,122,112,.12), 0 40px 80px -30px rgba(244,151,142,.45)",
+              }}
+            >
               <div
-                key={stat.label}
-                className="flex flex-col items-center justify-center text-center px-2 lg:px-4"
-              >
-                <div className="text-2xl lg:text-4xl font-bold text-ink tracking-tight leading-none">
-                  {stat.value}
-                </div>
-                <div className="text-[11px] lg:text-xs text-warm-gray mt-2 lg:mt-3 tracking-wide">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+                aria-hidden
+                className="absolute inset-[18px] rounded-full border border-dashed border-white/60"
+              />
+            </div>
+
+            {/* Decorative stars */}
+            <svg
+              className="absolute top-[12%] right-[4%] w-[26px] h-[26px] text-accent z-[4] rotate-[8deg]"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden
+            >
+              <path d="M12 1.5l2.6 6.6 7.1.5-5.4 4.7 1.7 6.9L12 16.7 5.9 20.2l1.7-6.9-5.4-4.7 7.1-.5z" />
+            </svg>
+            <svg
+              className="absolute bottom-[22%] -left-[2%] w-[18px] h-[18px] text-accent opacity-70 z-[4] -rotate-[12deg]"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden
+            >
+              <path d="M12 1.5l2.6 6.6 7.1.5-5.4 4.7 1.7 6.9L12 16.7 5.9 20.2l1.7-6.9-5.4-4.7 7.1-.5z" />
+            </svg>
+
+            {/* Product photo */}
+            <Image
+              src="/images/product-7set.png"
+              alt="7가지 컬러 미끄럼방지 양말"
+              fill
+              sizes="(max-width: 880px) 80vw, 560px"
+              className="relative z-[3] object-contain p-12"
+              priority
+            />
+
+            {/* BEST floating badge */}
+            <div
+              className="absolute top-[8%] -left-[6%] sm:-left-[6%] z-[5] flex items-center gap-2.5 rounded-[14px] bg-white px-4 py-3 text-[13px] font-bold text-ink"
+              style={{
+                boxShadow:
+                  "0 16px 40px -12px rgba(31,26,26,.18), 0 2px 4px rgba(0,0,0,.04)",
+              }}
+            >
+              <span className="rounded-md bg-accent px-2 py-1 text-[11px] font-extrabold tracking-[0.06em] text-white">
+                BEST
+              </span>
+              <span>2025 베스트셀러</span>
+            </div>
+
+            {/* Safety certified badge */}
+            <div
+              className="absolute bottom-[8%] -right-[8%] z-[5] flex items-center gap-2.5 rounded-[14px] bg-white px-4 py-3 text-[13px] font-bold text-ink"
+              style={{
+                boxShadow:
+                  "0 16px 40px -12px rgba(31,26,26,.18), 0 2px 4px rgba(0,0,0,.04)",
+              }}
+            >
+              <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#E8F4EC] text-[#2E8A55] text-[14px]">
+                ✓
+              </span>
+              <span className="flex flex-col leading-[1.2]">
+                안전 인증 완료
+                <small className="text-[11px] font-medium text-[#8F8786]">
+                  KC · OEKO-TEX®
+                </small>
+              </span>
+            </div>
           </div>
         </div>
       </div>
